@@ -48,7 +48,7 @@ class BlogPageDetails_books(BaseModel):
     category: str
     author: str
 
-@app.get('/')
+@app.get('/',  methods=["GET", "HEAD"])
 def read_root():
     return {"msg": "Recommendation API is running!"}
 
