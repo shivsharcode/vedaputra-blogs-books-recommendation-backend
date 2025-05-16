@@ -48,7 +48,7 @@ class BlogPageDetails_books(BaseModel):
     category: str
     author: str
 
-@app.get('/',  methods=["GET", "HEAD"])
+@app.api_route('/', methods=['GET', 'HEAD', 'POST'])
 def read_root():
     return {"msg": "Recommendation API is running!"}
 
@@ -95,7 +95,7 @@ def book_recommend(req: BlogPageDetails_books):
     # step-02: Get embedding for query
     query_embedding = model.encode([query_text])
     
-    # step-03: Normalize embedding (if your FAISS index was built on normalized vecotrs)
+    # step-03: Normalize embedding (if your FAISS index was built on normalized vectors)
     query_embedding = normalize(query_embedding)
     
     # step-04: search faiss index
